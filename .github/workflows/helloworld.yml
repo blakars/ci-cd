@@ -36,12 +36,14 @@ jobs:
           npm install
           ionic build --release
       
+      #Upload build to path cicd_app/www
       - name: Upload build artifacts
         uses: actions/upload-artifact@v1
         with:
           name: build
           path: cicd_app/www
 
+  #Deployment of build to dockerhub
   deploy:
     name: DockerHub Deployment
     needs: build
